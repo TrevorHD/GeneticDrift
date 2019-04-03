@@ -397,6 +397,9 @@ grid.text(label = bquote("N"[0]*" = 100"), x = 0.624, y = 0.385, just = "centre"
 grid.text(label = bquote("N"[0]*" = 1000"), x = 0.947, y = 0.385, just = "centre",
           gp = gpar(fontsize = 32, col = "white"))
 
+# Note that graphics device may vary between computers
+# Thus, adjustments may need to be made to this code section
+
 # Deactivate grid layout; finalise graphics save
 popViewport()
 dev.off()
@@ -517,6 +520,9 @@ grid.text(label = bquote("N"[0]*" = 300, A"[0]*" = 0.7"), x = 0.892, y = 0.575, 
           gp = gpar(fontsize = 32, col = "white"))
 grid.text(label = bquote("N"[0]*" = 20, A"[0]*" = 0.5"), x = 0.892, y = 0.812, just = "centre",
           gp = gpar(fontsize = 32, col = "white"))
+
+# Note that graphics device may vary between computers
+# Thus, adjustments may need to be made to this code section
 
 # Deactivate grid layout; finalise graphics save
 popViewport()
