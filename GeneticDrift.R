@@ -472,7 +472,7 @@ grid.text(label = c("Genetic drift causes random changes in allele frequencies",
                     "and can lead to loss or fixation of traits; drift effects can be",
                     "very strong when a population starts out small, or when the",
                     "the initial allele frequency is too high or too low."),
-                    x = c(0.044, 0.029, 0.029, 0.029), y = c(0.112, 0.092, 0.072, 0.052), just = "left",
+          x = c(0.044, 0.029, 0.029, 0.029), y = c(0.112, 0.092, 0.072, 0.052), just = "left",
           gp = gpar(fontsize = 31, col = "white", fontface = "italic"))
 
 # Add bottom text on right
