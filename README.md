@@ -9,3 +9,9 @@ This program simulates genetic drift and natural selection under a variety of co
 **GDFP** *(.jpeg)* - Plots showing how initial allele frequency and initial population size affect genetic drift.
 
 **GDCP-NSCP** *(.jpeg)* - Plots comparing genetic drift to natural selection under the same initial conditions.
+
+# Images
+
+![](https://github.com/TrevorHD/GeneticDrift/blob/master/GDFP.jpeg)
+
+![](https://github.com/TrevorHD/GeneticDrift/blob/master/GDCP-NSCP.jpeg)
