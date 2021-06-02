@@ -1,4 +1,4 @@
-# ----- Load necessary libraries --------------------------------------------------------------------------
+##### Load necessary libraries ----------------------------------------------------------------------------
 
 library(tidyverse)
 library(grid)
@@ -8,7 +8,7 @@ library(gridBase)
 
 
 
-# ----- Create function to define initial conditions ------------------------------------------------------
+##### Create function to define initial conditions --------------------------------------------------------
 
 # Set initial conditions
 conditions <- function(N0, A0){
@@ -26,15 +26,13 @@ conditions <- function(N0, A0){
                                  size = N, replace = FALSE),
                      a2 = sample(c(rep("A", round(A*N, digits = nchar(N) - 1)),
                                    rep("a", round(a*N, digits = nchar(N) - 1))), 
-                                 size = N, replace = FALSE))
-  
-}
+                                 size = N, replace = FALSE))}
 
 
 
 
 
-# ----- Create genetic drift function GDFP ----------------------------------------------------------------
+##### Create genetic drift function GDFP ------------------------------------------------------------------
  
 # Simulation for genetic drift in a fixed population size
 # NO NATURAL SELECTION and BIRTH AT REPLACEMENT RATE (i.e. constant population)
@@ -48,23 +46,20 @@ sim.gdfp <- function(n){
       mate1 <- as.vector(t(pop[mating.random[2*i - 1], ]))
       mate2 <- as.vector(t(pop[mating.random[2*i], ]))
       assign(paste0("child", 2*i - 1), c(sample(mate1, size = 1), sample(mate2, size = 1)))
-      assign(paste0("child", 2*i), c(sample(mate1, size = 1), sample(mate2, size = 1)))
-    }
+      assign(paste0("child", 2*i), c(sample(mate1, size = 1), sample(mate2, size = 1)))}
     
     # Children become the next generation
     pop <<- as.data.frame(matrix(unlist(mget(paste0("child", 1:N))), nrow = N, byrow = TRUE))
     
     # Calculate new allele frequency
     allele.count <<- length(pop[, 1][pop[, 1] == "A"]) + length(pop[, 2][pop[, 2] == "A"])
-    return(allele.count/(2*N))
-    
-}
+    return(allele.count/(2*N))}
 
 
 
 
 
-# ----- Create genetic drift function GDCP ----------------------------------------------------------------
+##### Create genetic drift function GDCP ------------------------------------------------------------------
 
 # Simulation for genetic drift in a changing population
 # NO NATURAL SELECTION and VARYING CLUTCH SIZE (i.e. fluctuating population)
@@ -75,8 +70,7 @@ sim.gdcp <- function(n){
     
     # Ensure that one individual cannot mate if population is an odd number
     if(nrow(pop) %% 2 != 0){
-      pop <<- pop[-sample(c(1:nrow(pop)), size = 1), ]
-    }
+      pop <<- pop[-sample(c(1:nrow(pop)), size = 1), ]}
     
     # Continue only if population is nonzero after pre-reproductive calculations
     if(nrow(pop) != 0){
@@ -90,15 +84,11 @@ sim.gdcp <- function(n){
         mate2 <- as.vector(t(pop[mating.random[2*i], ]))
         nchild <- sample(c(0:4), size = 1, prob = c(0.1, 0.2, 0.3, 0.3, 0.1))
         if(i == 1){
-          prev.nchild <- 0
-        }
+          prev.nchild <- 0}
         if(nchild != 0){
           for(j in 1:nchild){
             assign(paste0("child", prev.nchild + 1), c(sample(mate1, size = 1), sample(mate2, size = 1)))
-            prev.nchild <- prev.nchild + 1
-          }
-        }
-      }
+            prev.nchild <- prev.nchild + 1}}}
       
       # Continue only if population is nonzero after post-reproductive calculations
       if(prev.nchild != 0){
@@ -116,15 +106,13 @@ sim.gdcp <- function(n){
       
     } else {return(-1)}
     
-  } else {return(-1)}
-  
-}
+  } else {return(-1)}}
 
 
 
 
 
-# ----- Create natural selection function NSCP ------------------------------------------------------------
+##### Create natural selection function NSCP --------------------------------------------------------------
   
 # Simulation for genetic drift and natural selection in a changing population 
 # NATURAL SELECTION and VARYING CLUTCH SIZE (i.e. fluctuating population)  
@@ -139,8 +127,7 @@ sim.nscp <- function(n){
                              sample(c(0, 1), size = 1, prob = c(0.1, 0.9)),
                              ifelse((pop$a1[i] == "A" && pop$a2[i] == "a") || (pop$a1[i] == "a" && pop$a2[i] == "A"), 
                                     sample(c(0, 1), size = 1, prob = c(0.2, 0.8)),
-                                    sample(c(0, 1), size = 1, prob = c(0.3, 0.7))))
-    }
+                                    sample(c(0, 1), size = 1, prob = c(0.3, 0.7))))}
     
     # Kill off individuals for which surv = 0, then remove column since it is no longer necessary                                 
     pop %>% filter(surv == 1) %>% 
@@ -148,8 +135,7 @@ sim.nscp <- function(n){
     
     # Ensure that one individual cannot mate if population is an odd number
     if(nrow(pop) %% 2 != 0){
-      pop <<- pop[-sample(c(1:nrow(pop)), size = 1), ]
-    }
+      pop <<- pop[-sample(c(1:nrow(pop)), size = 1), ]}
     
     # Continue only if population is nonzero after pre-reproductive calculations
     if(nrow(pop) != 0){
@@ -163,15 +149,11 @@ sim.nscp <- function(n){
         mate2 <- as.vector(t(pop[mating.random[2*i], ]))
         nchild <- sample(c(0:4), size = 1, prob = c(0.1, 0.2, 0.3, 0.3, 0.1))
         if(i == 1){
-          prev.nchild <- 0
-        }
+          prev.nchild <- 0}
         if(nchild != 0){
           for(j in 1:nchild){
             assign(paste0("child", prev.nchild + 1), c(sample(mate1, size = 1), sample(mate2, size = 1)))
-            prev.nchild <- prev.nchild + 1
-          }
-        }
-      }
+            prev.nchild <- prev.nchild + 1}}}
       
       # Continue only if population is nonzero after post-reproductive calculations
       if(prev.nchild != 0){
@@ -189,15 +171,13 @@ sim.nscp <- function(n){
       
     } else {return(-1)}
     
-  } else {return(-1)}
-  
-}  
+  } else {return(-1)}}  
 
 
 
 
 
-# ----- Create function to generate graphs ----------------------------------------------------------------
+##### Create function to generate graphs ------------------------------------------------------------------
 
 # Function to generate plots
 sim.plots <- function(type, ngen, N0, A0){
@@ -214,21 +194,17 @@ sim.plots <- function(type, ngen, N0, A0){
     y.val <- c(A, sapply(x.val[1:ngen], get(paste0("sim.", type))))
     if(0 %in% y.val){
       cutoff <- match(0, y.val)[1]
-      y.val <- replace(y.val, (cutoff + 1):length(y.val), NA)
-    }
+      y.val <- replace(y.val, (cutoff + 1):length(y.val), NA)}
     if(1 %in% y.val){
       cutoff <- match(1, y.val)[1]
-      y.val <- replace(y.val, (cutoff + 1):length(y.val), NA)
-    }
+      y.val <- replace(y.val, (cutoff + 1):length(y.val), NA)}
     if(-1 %in% y.val){
       cutoff <- match(-1, y.val)[1]
       y.val <- replace(y.val, (cutoff):length(y.val), NA)
-      assign(paste0("extinct.", i), TRUE)
-    } else {assign(paste0("extinct.", i), FALSE)}
+      assign(paste0("extinct.", i), TRUE)} else {assign(paste0("extinct.", i), FALSE)}
     x.val <- x.val[1:length(y.val)]
     assign(paste0("y.val.", i), y.val)
-    assign(paste0("x.val.", i), x.val)
-  }
+    assign(paste0("x.val.", i), x.val)}
   
   # Store data in one place
   data <- as.data.frame(cbind(x.val, as.data.frame(mget(paste0("y.val.", c(1:5))))))
@@ -268,32 +244,27 @@ sim.plots <- function(type, ngen, N0, A0){
     if(0 %in% get(paste0("y.val.", i))){
       temp.df <- data.frame(match(0, get(paste0("y.val.", i))) - 1, 0)
       p <- p + geom_point(data = temp.df, aes_string(x = names(temp.df)[1], y = names(temp.df)[2]), 
-                          colour = colours[i], size = 6)
-    }
+                          colour = colours[i], size = 6)}
     if(1 %in% get(paste0("y.val.", i))){
       temp.df <- data.frame(match(1, get(paste0("y.val.", i))) - 1, 1)
       p <- p + geom_point(data = temp.df, aes_string(x = names(temp.df)[1], y = names(temp.df)[2]), 
-                          colour = colours[i], size = 6)
-    }
+                          colour = colours[i], size = 6)}
     
     # Place x at time of population extinction
     if(get(paste0("extinct.", i)) == TRUE){
       temp.value <- match(TRUE, is.na(get(paste0("y.val.", i)))) - 2
       temp.df <- data.frame(temp.value, get(paste0("y.val.", i))[temp.value + 1])
       p <- p + geom_point(data = temp.df, aes_string(x = names(temp.df)[1], y = names(temp.df)[2]), 
-                          colour = colours[i], size = 6, pch = 13)
-    }
-  }
+                          colour = colours[i], size = 6, pch = 13)}}
   
-  return(p)
-  
-}
+  # Return plot
+  return(p)}
 
 
 
 
 
-# ----- Visualisation 1: Comparing N0 and A0 in GDFP ------------------------------------------------------
+##### Visualisation 1: Comparing N0 and A0 in GDFP --------------------------------------------------------
 
 # Prepare graphics device
 jpeg(filename = "GDFP.jpeg", width = 2600, height = 1800, units = "px")
@@ -408,7 +379,7 @@ dev.off()
 
 
 
-# ----- Visualisation 2: Comparing NSCP and GDCP ----------------------------------------------------------
+##### Visualisation 2: Comparing NSCP and GDCP ------------------------------------------------------------
 
 # Prepare graphics device
 jpeg(filename = "GDCP-NSCP.jpeg", width = 1800, height = 2000, units = "px")
