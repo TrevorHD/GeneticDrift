@@ -6,14 +6,22 @@ This program simulates genetic drift and natural selection under three different
 
 # Files
 
+## Scripts
+
 **GeneticDrift** *(.R)* - R code used to build the genetic drift simulator and create the visualisations below.
 
-**GDCP-NSCP** *(.jpeg)* - Plots, embedded below, that compare genetic drift to natural selection under the same initial conditions.
+## Figures
 
-**GDFP** *(.jpeg)* - Plots, embedded below, that show how initial allele frequency and initial population size affect genetic drift.
+**GDCP-NSCP** *(.jpeg)* - Plots that compare genetic drift to natural selection under the same initial conditions.
 
-<br/><br/>
+**GDFP** *(.jpeg)* - Plots that show how initial allele frequency and initial population size affect genetic drift.
 
-![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDFP.jpeg)
+<br/>
 
-![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDCP-NSCP.jpeg)
+# Featured Images
+
+Noteworthy or interesting plots, images, figures, and other graphical outputs from the code are included below.
+
+<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDFP.jpeg)</kbd>
+
+<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDCP-NSCP.jpeg)</kbd>
