@@ -20,7 +20,7 @@ This program simulates genetic drift and natural selection under three different
 
 # Featured Images
 
-Noteworthy or interesting plots, images, figures, and other graphical outputs from the code are included below.
+The first image demonstrates that, if all other factors are held constant, increasing the population size decreases the likelihood of alleles becoming fixed or lost, while changing the starting frequency can increase chances of loss if close to 0 or increase chances of fixation if close to 1. The second image shows that for a given population size and allele starting frequency, natural selection typically has much stronger effects on allele frequency than genetic drift.
 
 <kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDFP.jpeg)</kbd>
 
