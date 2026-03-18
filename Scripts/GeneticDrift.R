@@ -267,7 +267,7 @@ sim.plots <- function(type, ngen, N0, A0){
 ##### Visualisation 1: Comparing N0 and A0 in GDFP --------------------------------------------------------
 
 # Prepare graphics device
-jpeg(filename = "GDFP.jpeg", width = 2600, height = 1800, units = "px")
+jpeg(filename = "Figures/GDPlots1.jpeg", width = 2600, height = 1800, units = "px")
 
 # Create blank page
 grid.newpage()
@@ -382,7 +382,7 @@ dev.off()
 ##### Visualisation 2: Comparing NSCP and GDCP ------------------------------------------------------------
 
 # Prepare graphics device
-jpeg(filename = "GDCP-NSCP.jpeg", width = 1800, height = 2000, units = "px")
+jpeg(filename = "Figures/GDPlots2.jpeg", width = 1800, height = 2000, units = "px")
 
 # Create blank page
 grid.newpage()
