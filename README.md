@@ -1,27 +1,34 @@
 # Overview
 
-This program simulates genetic drift and natural selection under three different sets of assumptions. Condition GDFP (genetic drift in fixed population) explores how genetic drift affects allele frequencies when birth occurs at replacement rate, while GDCP (genetic drift in changing population) allows for variation in birth rates and NSCP (natural selection in changing population) introduces differential survival that increases with how many copies of the beneficial allele an individual has. Parameters that can be easily manipulated include the initial population size, initial allele frequency, and the number of generations over which the simulation occurs. The the distribution of clutch sizes and effects of the beneficial allele on survival can also be changed, but only by modifying the code.
+A program simulating genetic drift and natural selection under several different sets of assumptions. Here, we examine:
+
+* How the strength of genetic drift varies based on fixed population size and initial allele frequency
+* How natural selection and genetic drift compare across growing populations with identical initial allele frequencies and population sizes
+
+The simulation code allows users to easily change the initial population size, initial allele frequency, and the number of generations over which the simulation occurs in order to explore their effects on genetic drift and natural selection. The distribution of clutch sizes and effects of the beneficial allele on survival can also be changed, but involve additional modifications to the simulation code.
 
 <br/>
 
 # Files
 
-## Scripts
-
-**GeneticDrift** *(.R)* - R code used to build the genetic drift simulator and create the visualisations below.
-
 ## Figures
 
-**GDCP-NSCP** *(.jpeg)* - Plots that compare genetic drift to natural selection under the same initial conditions.
+**GDPlots1** *(.jpeg)* - Plots showing how initial allele frequency and population size affect genetic drift.
 
-**GDFP** *(.jpeg)* - Plots that show how initial allele frequency and initial population size affect genetic drift.
+**GDPlots2** *(.jpeg)* - Plots showing how genetic drift and natural selection compare in identical populations.
+
+## Scripts
+
+**GeneticDrift** *(.R)* - Script used to simulate genetic drift and natural selection, as well as to generate figures.
 
 <br/>
 
 # Featured Images
 
-The first image demonstrates that, if all other factors are held constant, increasing the population size decreases the likelihood of alleles becoming fixed or lost, while changing the starting frequency can increase chances of loss if close to 0 or increase chances of fixation if close to 1. The second image shows that for a given population size and allele starting frequency, natural selection typically has much stronger effects on allele frequency than genetic drift.
+Plots showing how initial allele frequency and population size affect genetic drift. If all other factors are held constant, increasing the population size decreases the likelihood of alleles becoming fixed or lost, while changing the starting frequency can increase chances of loss if close to 0 or increase chances of fixation if close to 1.
 
-<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDFP.jpeg)</kbd>
+<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDPlots1.jpeg)</kbd>
 
-<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDCP-NSCP.jpeg)</kbd>
+Plots showing how genetic drift and natural selection compare in identical populations. For a given population size and allele starting frequency, natural selection typically has much stronger effects on allele frequency than genetic drift.
+
+<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDPlots2.jpeg)</kbd>
