@@ -13,22 +13,22 @@ The simulation code allows users to easily change the initial population size, i
 
 ## Figures
 
-**GDPlots1** *(.jpeg)* - Plots showing how initial allele frequency and population size affect genetic drift.
+**GD_Plots_1** *(.jpeg)* - Plots of how initial allele frequency and population size affect genetic drift.
 
-**GDPlots2** *(.jpeg)* - Plots showing how genetic drift and natural selection compare in growing populations with identical initial sizes and initial allele frequencies.
+**GD_Plots_2** *(.jpeg)* - Plots of how genetic drift and natural selection compare in growing populations with identical initial sizes and initial allele frequencies.
 
 ## Scripts
 
-**GeneticDrift** *(.R)* - Script used to simulate genetic drift and natural selection, as well as to generate figures.
+**GD_Script** *(.R)* - Script for running simulations and generating figures.
 
 <br/>
 
 # Featured Images
 
-Plots showing how population size and initial allele frequency affect genetic drift. If all other factors are held constant, increasing population size decreases the likelihood of alleles becoming fixed or lost, while changing the initial allele frequency can increase chances of loss if close to 0 or chances of fixation if close to 1.
+Comparisons of genetic drift across different initial allele frequencies and population sizes. If all other factors are held constant, increasing population size decreases the likelihood of alleles becoming fixed or lost, while changing the initial allele frequency can increase chances of loss if close to 0 or chances of fixation if close to 1.
 
-<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDPlots1.jpeg)</kbd>
+<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GD_Plots_1.jpeg)</kbd>
 
-Plots showing how genetic drift and natural selection compare in growing populations with identical initial conditions. For a given initial population size and initial allele frequency, natural selection typically has much stronger effects on allele frequency than genetic drift.
+Comparisons of genetic drift and natural selection in growing populations with identical initial conditions. For a given initial population size and initial allele frequency, natural selection typically has much stronger effects on allele frequency than genetic drift.
 
-<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GDPlots2.jpeg)</kbd>
+<kbd>![](https://github.com/TrevorHD/GeneticDrift/blob/master/Figures/GD_Plots_2.jpeg)</kbd>
