@@ -1,8 +1,12 @@
-##### Load necessary libraries ----------------------------------------------------------------------------
+##### Prepare workspace -----------------------------------------------------------------------------------
 
+# Load libraries
 library(tidyverse)
 library(grid)
 library(gridBase)
+
+# Set working directory
+setwd("~/GitHub/GeneticDrift")
 
 
 
@@ -102,10 +106,9 @@ sim.gdcp <- function(n){
         allele.count <<- length(pop[, 1][pop[, 1] == "A"]) + length(pop[, 2][pop[, 2] == "A"])
         return(allele.count/(2*nrow(pop)))
         
+  # Close open if statements      
       } else {pop <<- data.frame(); return(-1)}
-      
     } else {return(-1)}
-    
   } else {return(-1)}}
 
 
@@ -166,11 +169,10 @@ sim.nscp <- function(n){
         # Calculate new allele frequency
         allele.count <<- length(pop[, 1][pop[, 1] == "A"]) + length(pop[, 2][pop[, 2] == "A"])
         return(allele.count/(2*nrow(pop)))
-        
+  
+  # Close open if statements              
       } else {pop <<- data.frame(); return(-1)}
-      
     } else {return(-1)}
-    
   } else {return(-1)}}  
 
 
@@ -267,7 +269,7 @@ sim.plots <- function(type, ngen, N0, A0){
 ##### Visualisation 1: Comparing N0 and A0 in GDFP --------------------------------------------------------
 
 # Prepare graphics device
-jpeg(filename = "Figures/GDPlots1.jpeg", width = 2600, height = 1800, units = "px")
+jpeg(filename = "Figures/GD_Plots_1.jpeg", width = 2600, height = 1800, units = "px")
 
 # Create blank page
 grid.newpage()
@@ -368,9 +370,6 @@ grid.text(label = bquote("N"[0]*" = 100"), x = 0.624, y = 0.385, just = "centre"
 grid.text(label = bquote("N"[0]*" = 1000"), x = 0.947, y = 0.385, just = "centre",
           gp = gpar(fontsize = 32, col = "white"))
 
-# Note that graphics device may vary between computers
-# Thus, adjustments may need to be made to this code section
-
 # Deactivate grid layout; finalise graphics save
 popViewport()
 dev.off()
@@ -382,7 +381,7 @@ dev.off()
 ##### Visualisation 2: Comparing NSCP and GDCP ------------------------------------------------------------
 
 # Prepare graphics device
-jpeg(filename = "Figures/GDPlots2.jpeg", width = 1800, height = 2000, units = "px")
+jpeg(filename = "Figures/GD_Plots_2.jpeg", width = 1800, height = 2000, units = "px")
 
 # Create blank page
 grid.newpage()
@@ -491,9 +490,6 @@ grid.text(label = bquote("N"[0]*" = 300, A"[0]*" = 0.7"), x = 0.892, y = 0.575, 
           gp = gpar(fontsize = 32, col = "white"))
 grid.text(label = bquote("N"[0]*" = 20, A"[0]*" = 0.5"), x = 0.892, y = 0.812, just = "centre",
           gp = gpar(fontsize = 32, col = "white"))
-
-# Note that graphics device may vary between computers
-# Thus, adjustments may need to be made to this code section
 
 # Deactivate grid layout; finalise graphics save
 popViewport()
